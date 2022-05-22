@@ -1,5 +1,9 @@
 # mlops-zoomcamp
 
+## Index
+
+- [Introduction](01-intro/)
+
 ## Environment setup (EC2)
 
 Launch an EC2 instance.
