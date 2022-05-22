@@ -1,0 +1,8 @@
+name: mlops-zoomcamp
+channels:
+  - defaults
+dependencies:
+  - pip=21.2.4
+  - python=3.8.13
+  - pip:
+    - -r requirements.txt
