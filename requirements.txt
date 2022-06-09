@@ -9,3 +9,5 @@ ptitprince==0.2.5
 mlflow==1.26.1
 hyperopt==0.2.7
 xgboost==1.6.1
+prefect==2.0b5
+fastparquet==0.8.1
