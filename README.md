@@ -3,6 +3,8 @@
 ## Index
 
 - [Introduction](01-intro/)
+- [Experiment tracking and model management](02-tracking/)
+- [Workflow Orchestration](03-orchestration/)
 
 ## Environment setup (EC2)
 
