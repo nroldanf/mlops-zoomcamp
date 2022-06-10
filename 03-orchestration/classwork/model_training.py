@@ -137,6 +137,19 @@ def main(
     best_params = train_model_search(train, valid, y_val)
     train_best_model(train, valid, y_val, dv, best_params)
     
-    
-if __name__ == "__main__":
-    main()
+
+from prefect.deployments import DeploymentSpec
+from prefect.orion.schemas.schedules import IntervalSchedule
+from prefect.flow_runners import SubprocessFlowRunner
+from datetime import timedelta
+
+DeploymentSpec(
+    flow=main,
+    name="model_training",
+    schedule=IntervalSchedule(interval=timedelta(minutes=5)), 
+    tags=["ml"], # for filtering or assign a GPU instance for this specific flow
+    flow_runner=SubprocessFlowRunner()
+)
+
+# if __name__ == "__main__":
+#     main()

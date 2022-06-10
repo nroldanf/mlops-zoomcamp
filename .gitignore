@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# keys
+*.cer
+
 # data
 data/
 models/

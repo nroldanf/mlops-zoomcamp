@@ -66,10 +66,31 @@ Prefect uses pydantic to validate parameters. Parameters in task and flow functi
 
 ## Prefect server remotely
 
-Start a VM (could be an EC2 instance).
+Start a VM (could be an EC2 instance). I used latest free tier ubuntu instance (22 at the time) and `t3.xlarge`.
+
+Login into the instance using ssh. Inside the instance do the following steps.
+
+**Note**: Use an environment to install prefect, could be a conda environment.
+
+Install conda:
+```
+wget <search in https://www.anaconda.com/products/distribution x86 linux dist and copy url>
+bash <file>
+conda create -n mlops python=3.9
+conda activate mlops
+```
+
+
+Install `prefect`:
+```
+sudo apt update
+sudo apt install python3-pip
+python3 -m pip install prefect==2.0b5
+```
 
 ```
 prefect config set PREFECT_ORION_UI_API_URL="http://{public-ip}:4200/api"
+# to confirm the change
 prefect config view
 ```
 
@@ -83,9 +104,53 @@ Start the server:
 prefect orion start --host 0.0.0.0
 ```
 
-To start logging flow and task runs against remote server:
+To start logging flow and task runs against remote server (this on your local machine)
 ```
-prefect config set PREFECT_ORION_API_URL="http://{public-ip}:4200/api"
+prefect config set PREFECT_API_URL="http://{public-ip}:4200/api"
 ```
 
 There is also a Prefect cloud, where they host prefect and add an authentication layer.
+
+## Prefect storage
+
+List all configured storages:
+```
+prefect storage ls
+```
+
+Create a storage:
+```
+prefect storage create
+```
+
+## Prefect Deployment
+
+Have the option to deploy the flow using locally, docker (as a container) or k8s (as a pod).
+
+Tags are used for filtering or assigning a GPU instance for this specific flow.
+
+To create a deployment:
+```
+prefect deployment create model_training.py
+```
+
+Still, even if you created a deployment you need to provide where the flow is going to run.
+
+## Prefect agent and work queues
+
+Work queue are just queues.
+
+Agent is attached to queues and is the one that looks for work to do `every 5 seconds`, they poll a specific work queue for new work.
+
+```
+prefect work-queue preview 212bc626-d80a-489f-834a-0f14733014d5
+```
+
+To spin up an agent:
+```
+prefect agent start <queue-id>
+# e.g.
+prefect agent start 212bc626-d80a-489f-834a-0f14733014d5
+```
+
+For example, if we use `a docker flow runner` the agent will be the one responsible for spinning up a docker container and run the flow inside of it.
