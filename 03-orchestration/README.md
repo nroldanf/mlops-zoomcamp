@@ -176,4 +176,6 @@ In order, this homework assignment will be about:
 2. Changing the parameters to take in a date. Making this parameter dynamic.
 3. Scheduling a batch training job that outputs the latest model somewhere
 
+## Resources
 
+- **Cron tab**: To test cron expressions. https://crontab.guru/
