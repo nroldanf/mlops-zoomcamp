@@ -1,10 +1,13 @@
 # mlops-zoomcamp
 
+This repo contains all solutions and notes to MLOps zoomcamp.
+
 ## Index
 
-- [Introduction](01-intro/)
-- [Experiment tracking and model management](02-tracking/)
-- [Workflow Orchestration](03-orchestration/)
+1. [Introduction](01-intro/)
+2. [Experiment tracking and model management](02-tracking/)
+3. [Workflow Orchestration](03-orchestration/)
+4. [Model Deployment](04-deployment/)
 
 ## Environment setup (EC2)
 

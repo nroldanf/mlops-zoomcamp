@@ -11,3 +11,4 @@ hyperopt==0.2.7
 xgboost==1.6.1
 prefect==2.0b5
 fastparquet==0.8.1
+requests==2.27.1
