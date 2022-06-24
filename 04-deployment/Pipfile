@@ -7,7 +7,8 @@ name = "pypi"
 scikit-learn = "==1.0.2"
 pandas = "*"
 pyarrow = "==8.0.0"
-wget = "*"
+requests = "==2.28.0"
+boto3 = "==1.24.16"
 
 [dev-packages]
 

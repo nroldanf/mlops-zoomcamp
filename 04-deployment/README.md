@@ -36,3 +36,18 @@ Model is always available, up and running all the time.
 
 E.g. Content moderation (e.g. Youtube videos, Twitch Streaming). Copyright violation, NSFW, Violence, etc.
 
+## Homework
+
+Build the image:
+```
+docker build -t mlopz-zoomcamp:hw4 .
+```
+
+Execute the script as depicted below:
+```
+docker run --rm -v ~/.aws:/root/.aws \
+    -e DATE="2021-03-01" \
+    -e AWS_PROFILE="nicolas-devops" \
+    -e BUCKET="mlops-zoomcamp-nicolas" \
+    mlops-zoomcamp:hw4
+```
