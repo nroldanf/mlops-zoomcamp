@@ -38,6 +38,35 @@ E.g. Content moderation (e.g. Youtube videos, Twitch Streaming). Copyright viola
 
 ## Homework
 
+### Terraform
+
+Initialize terraform (installs providers plugin from terraform registry)
+```
+terraform init
+```
+
+Format configuration files for readability and consistency.
+```
+terraform fmt
+```
+
+Validates terraform configuration.
+```
+terraform validate
+```
+
+Creates and updates infrastructure according to Terraform configuration. First, prints out the execution plan which describes actions Terraform will take.
+```
+terraform apply
+```
+
+Inspect state:
+```
+terraform show
+```
+
+### Docker
+
 Build the image:
 ```
 docker build -t mlopz-zoomcamp:hw4 .
