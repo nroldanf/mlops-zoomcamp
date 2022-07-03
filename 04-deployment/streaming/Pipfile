@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+boto3 = "==1.24.22"
+mlflow = "==1.27.0"
+scikit-learn = "==1.0.2"
+psutil = "==5.9.1"
+
+[dev-packages]
+jupyterlab = "*"
+pyarrow = "==8.0.0"
+
+[requires]
+python_version = "3.8"
