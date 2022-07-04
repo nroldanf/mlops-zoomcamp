@@ -24,6 +24,7 @@ mlruns/
 mlflow.db
 *.bin
 *.parquet
+*.csv
 
 # MacOS
 .DS_Store

@@ -39,7 +39,6 @@ services:
     networks:
       - back-tier
       - front-tier
-
   prometheus:
     image: prom/prometheus
     volumes:
@@ -53,7 +52,6 @@ services:
     networks:
       - back-tier
     restart: always
-
   grafana:
     image: grafana/grafana
     user: "472"
