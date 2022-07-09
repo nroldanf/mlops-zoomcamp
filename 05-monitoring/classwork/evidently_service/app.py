@@ -8,6 +8,7 @@ Metrics calculation results are available with `GET /metrics` HTTP method in Pro
 """
 import hashlib
 import os
+import sys
 
 import dataclasses
 import datetime
@@ -184,7 +185,7 @@ def configure_service():
     # try to find a config file, it should be generated via the data preparation script
     if not os.path.exists(config_file_path):
         logging.error("File %s does not exist", config_file_path)
-        exit("Cannot find a config file for the metrics service. Try to check README.md for setup instructions.")
+        sys.exit("Cannot find a config file for the metrics service. Try to check README.md for setup instructions.")
 
     with open(config_file_path, "rb") as config_file:
         config = yaml.safe_load(config_file)
@@ -220,4 +221,4 @@ def iterate(dataset: str):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)

@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# snyk
+.dccache
+
 # Local .terraform directories
 **/.terraform/*
 

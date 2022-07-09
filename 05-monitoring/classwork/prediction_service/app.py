@@ -53,4 +53,4 @@ def send_to_evidently_service(record: dict, prediction: float):
     requests.post(f"{EVIDENTLY_SERVICE_ADDRESS}/iterate/taxi", json=[rec])
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=9696)
+    app.run(debug=False, host='0.0.0.0', port=9696)
