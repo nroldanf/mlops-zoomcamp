@@ -1,4 +1,10 @@
+from pathlib import Path
 import model
+
+def read_text(file):
+    test_dir = Path(__file__).parent
+    with open(test_dir / file, 'rt', encoding='utf8') as f:
+        return f.read().strip()
 
 def test_prepare_features():
     model_service = model.ModelService(None)
@@ -15,7 +21,7 @@ def test_prepare_features():
     assert actual_features == expected_features
     
 def test_base64_decode():
-    base64_input = "ewogICAgICAgICJyaWRlIjogewogICAgICAgICAgICAiUFVMb2NhdGlvbklEIjogMTMwLAogICAgICAgICAgICAiRE9Mb2NhdGlvbklEIjogMjA1LAogICAgICAgICAgICAidHJpcF9kaXN0YW5jZSI6IDMuNjYKICAgICAgICB9LCAKICAgICAgICAicmlkZV9pZCI6IDI1NgogICAgfQ=="
+    base64_input = read_text("data.b64")
     actual_result = model.base64_decode(base64_input)
 
     expected_result = {
@@ -27,12 +33,7 @@ def test_base64_decode():
         "ride_id": 256
     }
     assert actual_result == expected_result
-    
-'''
-- Test should be as independent as possible
-- Should be fast (don't want to go to S3 and download the model)
-- A mock is something that looks like the actual thing but it's not, it's used for test purposes
-'''
+
 class ModelMock:
     
     def __init__(self, value):
@@ -61,7 +62,7 @@ def test_lambda_handler():
     event = {
         "Records": [{
             "kinesis": {
-                "data": "ewogICAgICAgICJyaWRlIjogewogICAgICAgICAgICAiUFVMb2NhdGlvbklEIjogMTMwLAogICAgICAgICAgICAiRE9Mb2NhdGlvbklEIjogMjA1LAogICAgICAgICAgICAidHJpcF9kaXN0YW5jZSI6IDMuNjYKICAgICAgICB9LCAKICAgICAgICAicmlkZV9pZCI6IDI1NgogICAgfQ==",
+                "data": read_text("data.b64"),
             }
         }]
     }

@@ -1,7 +1,7 @@
 import os
+import base64
 import json
 import boto3
-import base64
 import mlflow
 
 def get_model_location(run_id: str, model_bucket: str, experiment_id: str):
@@ -11,6 +11,7 @@ def get_model_location(run_id: str, model_bucket: str, experiment_id: str):
     logged_model = f's3://{model_bucket}/{experiment_id}/{run_id}/artifacts/model'
     return logged_model
 
+# 
 def load_model(run_id: str, model_bucket: str, experiment_id: str):
     model_path = get_model_location(run_id, model_bucket, experiment_id)
     model = mlflow.pyfunc.load_model(model_path)
@@ -30,7 +31,7 @@ class ModelService:
     
     def prepare_features(self, ride):
         features = {}
-        features['PU_DO'] = '%s_%s' % (ride['PULocationID'], ride['DOLocationID'])
+        features['PU_DO'] = f"{ride['PULocationID']}_{ride['DOLocationID']}"
         features['trip_distance'] = ride['trip_distance']
         return features
 
@@ -88,7 +89,13 @@ def create_kinesis_client():
         return session.client("kinesis")
     return session.client(service_name="kinesis", endpoint_url=endpoint_url)
 
-def init(prediction_stream_name: str, run_id: str, model_bucket: str, experiment_id: str, test_run: bool):
+def init(
+        prediction_stream_name: str, 
+        run_id: str, 
+        model_bucket: str, 
+        experiment_id: str, 
+        test_run: bool
+    ):
     model = load_model(run_id, model_bucket, experiment_id)
     
     callbacks = []

@@ -53,6 +53,10 @@ To run the unit tests:
 pytest tests
 ```
 
+- Test should be as independent as possible
+- Should be fast (don't want to go to S3 and download the model)
+- A mock is something that looks like the actual thing but it's not, it's used for test purposes
+
 To deploy the infrastructure:
 ```
 terraform init
@@ -87,6 +91,13 @@ aws --endpoint-url=http://localhost:4566 \
     --stream-name ride_predictions \
     --shard-count 1
 ``` 
+
+## Linting and formatting
+
+```
+pylint <file>
+pylint --recursive=y <directory>
+```
 
 ## Questions for office hours
 
