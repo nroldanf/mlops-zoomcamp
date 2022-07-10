@@ -99,6 +99,16 @@ pylint <file>
 pylint --recursive=y <directory>
 ```
 
+```
+black --diff --color --verbose <dir>
+black <dir>
+```
+
+```
+isort --diff --check <dir>
+isort <dir>
+```
+
 ## Questions for office hours
 
 - What happens when my model is too big and can't fit into my repo for the integration tests?
