@@ -17,6 +17,9 @@ deepdiff = "==5.8.1"
 pylint = "*"
 black = "*"
 isort = "*"
+pre-commit = "*"
+coverage = "==6.4.1"
+pytest-cov = "==3.0.0"
 
 [requires]
 python_version = "3.8"

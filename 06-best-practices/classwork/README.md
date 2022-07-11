@@ -109,6 +109,30 @@ isort --diff --check <dir>
 isort <dir>
 ```
 
+## Coverage (optional)
+
+Coverage measures which parts of the code are being exercised by the tests, producing a percentage of coverage value. Tools for this in Python are:
+
+- coverage
+- coverage-py (from pytest developers)
+
+For pytest:
+```
+coverage run -m pytest <dir>
+```
+
+Specific test runners offer plugins to run coverage while running tests, such as `pytest-cov`. Running the following command will run the tests and produce a report of coverage. This also works with the configuration file for coverage.
+```
+pytest --cov=<path-to-analyze> <tests-path>
+```
+
+## Precommit hooks
+
+Always run precommit install when running cloning a repo (just once):
+```
+pre-commit install
+```
+
 ## Questions for office hours
 
 - What happens when my model is too big and can't fit into my repo for the integration tests?
