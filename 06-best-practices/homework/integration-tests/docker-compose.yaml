@@ -1,0 +1,18 @@
+# version: "3.8"
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - LAMBDA_EXECUTOR=docker-reuse
+      - LAMBDA_REMOVE_CONTAINERS=true
+      - LAMBDA_REMOTE_DOCKER=false
+      - AWS_ACCESS_KEY_ID=abc
+      - AWS_SECRET_ACCESS_KEY=xyz
+# aws --endpoint-url=http://localhost:4566 s3 mb s3://nyc-duration
